@@ -32,8 +32,6 @@ python3 jiema_decoder.py
    - 输入 `csv` 将结果保存为 CSV 文件。
    - 输入 `txt` 将结果保存为文本文件。
    - 输入 `file` 从指定文件中解码字符串。
-<br>
-<br>
 
 4. **文件解码**
 
