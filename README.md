@@ -31,8 +31,6 @@ When prompted, enter the string you want to decode. The script will identify the
    - Type `csv` to save the results as a CSV file.
    - Type `txt` to save the results as a text file.
    - Type `file` to decode strings from a specified file.
-<br>
-<br>
 
 4. **File decoding**
 
