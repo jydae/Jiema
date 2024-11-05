@@ -3,6 +3,9 @@
 一个用 Python 编写的多编码解码器，旨在以 CSV 格式高效报告。<br>
 支持二进制、摩尔斯、十六进制、Base64、Base32、URL 编码和 Unicode 转义。
 
+<br>
+<p align="center"><img src='img.png' align="top" height="170px"></p>
+
 ### 使用方法
 ---
 
@@ -43,10 +46,3 @@ python3 jiema_decoder.py
 pip install colorama
 ```
 
----
-
-<div style="text-align: center;">
-<img src='screenshot.png'>
-</div>
-
----
