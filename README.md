@@ -3,13 +3,7 @@
 A multi-encoding decoder written in Python designed for efficient reporting in CSV format.<br>
 Supports binary, morse, hexadecimal, base64, base32, URL encoding, and unicode escape.
 
----
-
-<div style="text-align: center;">
-<img src='screenshot.png'>
-</div>
-
----
+<h3 align="center"><img src='img.png' align="top" height="200px"></h3>
 
 ### Usage
 ---
@@ -50,4 +44,3 @@ The script will read each line from the file and attempt to decode them respecti
 ```
 pip install colorama
 ```
-
