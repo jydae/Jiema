@@ -11,26 +11,15 @@ class Ping:
     decoded_value = ' '
 
 
-def detect_base64():
-    try:
-        Ping.decoded_value = base64.b64decode(value).decode('UTF-8').replace('\n', ' ').strip()
-        if Ping.decoded_value == '':
-            pass
-        else:
-            Ping.val_name = 'BASE64'
-            Ping.is_found = 1
-    except ValueError:
-        pass
+def detect_base():
+    decode_base(value, 'BASE64', base64.b64decode)
+    decode_base(value, 'BASE32', base64.b32decode)
 
-
-def detect_base32():
+def decode_base(value, base, decode_func):
     try:
-        Ping.decoded_value = base64.b32decode(value).decode('UTF-8').replace('\n', ' ').strip()
-        if Ping.decoded_value == '':
-            pass
-        else:
-            Ping.val_name = 'BASE32'
-            Ping.is_found = 1
+        Ping.decoded_value = decode_func(value).decode('UTF-8').replace('\n', ' ').strip()
+        Ping.val_name = base
+        Ping.is_found = 1
     except ValueError:
         pass
 
@@ -74,8 +63,9 @@ def detect_morse():
     for symbol in separated:
         if symbol in morse_dict:
             Ping.decoded_value += morse_dict[symbol]
-            Ping.is_found = 1
             Ping.val_name = 'MORSE'
+            Ping.is_found = 1
+
 
 
 def detect_binary():
@@ -85,16 +75,18 @@ def detect_binary():
         byte_number = (binary_int.bit_length() + 7) // 8
         binary_array = binary_int.to_bytes(byte_number, 'big')
         Ping.decoded_value = binary_array.decode()
-        Ping.is_found = 1
         Ping.val_name = 'BINARY'
+        Ping.is_found = 1
+
 
 
 def detect_url():
     for char in value:
         if char in '%' and Ping.is_found == 0:
             Ping.decoded_value = urllib.parse.unquote(value, encoding='UTF-8')
-            Ping.is_found = 1
             Ping.val_name = 'URL'
+            Ping.is_found = 1
+
 
 
 def save_results_to_txt(results_to_save):
@@ -119,8 +111,7 @@ def strip_ansi(text):
 def execute():
     Ping.decoded_value = ''
     Ping.is_found = 0
-    detect_base64()
-    detect_base32()
+    detect_base()
     detect_hexa()
     detect_ue()
     detect_morse()
